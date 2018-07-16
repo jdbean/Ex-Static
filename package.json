@@ -1,0 +1,242 @@
+{
+  "name": "ex-static",
+  "version": "0.1.0",
+  "description": "CMS Admin Panel for Jekyll Sites",
+  "private": true,
+  "scripts": {
+    "start-message": "babel-node tools/startMessage.js",
+    "prestart": "npm-run-all --parallel start-message remove-dist && npm run build-semantic",
+    "start": "npm-run-all --parallel start-api open:src lint:watch",
+    "start-api": "sh script/test-server",
+    "open:src": "babel-node tools/srcServer.js",
+    "lint": "esw webpack.config.* src tools --ignore-pattern src/semantic",
+    "lint:watch": "npm run lint -- --watch",
+    "clean-dist": "npm run remove-dist && npm run add-dist",
+    "add-dist": "mkdirp ./lib/ex-static/public",
+    "remove-dist": "rimraf ./lib/ex-static/public",
+    "build:html": "babel-node tools/buildHtml.js",
+    "prebuild": "npm run clean-dist && npm run build-semantic && npm run build:html && npm run lint",
+    "build": "babel-node tools/build.js",
+    "precommit": "lint-staged",
+    "build-semantic": "cd src/semantic && gulp build-css build-assets",
+    "watch-semantic": "cd src/semantic && npm run build-semantic && gulp watch"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --single-quote --trailing-comma --print-width 80 es5 --write",
+      "git add"
+    ]
+  },
+  "author": "J.D. Bean",
+  "license": "AGPL-3.0",
+  "dependencies": {
+    "classnames": "2.2.5",
+    "connected-react-router": "^4.3.0",
+    "highlight.js": "^9.12.0",
+    "history": "4.7.2",
+    "js-yaml": "^3.6.1",
+    "lint-staged": "^4.3.0",
+    "lodash": "4.13.1",
+    "moment": "^2.17.1",
+    "prop-types": "^15.6.0",
+    "react": "^16.0.0",
+    "react-document-title": "^2.0.3",
+    "react-dom": "^16.0.0",
+    "react-hotkeys": "^1.1.4",
+    "react-markdown": "^3.3.3",
+    "react-redux": "^5.0.1",
+    "react-redux-toastr": "^7.3.0",
+    "react-router-dom": "4.2.2",
+    "react-simplemde-editor": "^3.6.15",
+    "react-textarea-autosize": "^5.1.0",
+    "react-transition-group": "^2.3.1",
+    "react-widgets": "^4.0.0",
+    "react-widgets-moment": "^4.0.15",
+    "redux": "^3.0.0",
+    "redux-logger": "2.6.1",
+    "redux-thunk": "2.1.0",
+    "semantic-ui-react": "^0.81.1",
+    "underscore": "1.8.3"
+  },
+  "devDependencies": {
+    "babel-cli": "6.26.0",
+    "babel-core": "6.26.3",
+    "babel-eslint": "7.2.3",
+    "babel-jest": "20.0.3",
+    "babel-loader": "7.1.1",
+    "babel-plugin-lodash": "^3.3.2",
+    "babel-plugin-react-transform": "^3.0.0",
+    "babel-plugin-transform-react-constant-elements": "6.23.0",
+    "babel-plugin-transform-react-remove-prop-types": "0.4.6",
+    "babel-polyfill": "6.23.0",
+    "babel-preset-env": "1.6.0",
+    "babel-preset-react": "6.24.1",
+    "babel-preset-stage-1": "6.24.1",
+    "browser-sync": "2.24.4",
+    "chalk": "1.1.3",
+    "cheerio": "0.20.0",
+    "coveralls": "^2.13.1",
+    "css-loader": "0.26.1",
+    "enzyme": "^3.0.0",
+    "eslint": "3.12.2",
+    "eslint-plugin-import": "2.2.0",
+    "eslint-plugin-react": "6.8.0",
+    "eslint-watch": "2.1.14",
+    "extract-text-webpack-plugin": "2.0.0-beta.4",
+    "file-loader": "0.9.0",
+    "husky": "^0.14.3",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^19.0.2",
+    "jsdom": "^9.2.1",
+    "mkdirp": "^0.5.1",
+    "mocha": "2.4.5",
+    "nock": "^8.0.0",
+    "node-sass": "3.7.0",
+    "npm-run-all": "3.1.2",
+    "prettier": "^1.7.4",
+    "react-hot-loader": "^4.3.3",
+    "react-test-renderer": "^16.0.0",
+    "redux-immutable-state-invariant": "1.2.4",
+    "redux-mock-store": "^1.0.4",
+    "rimraf": "2.5.4",
+    "sass-loader": "4.1.0",
+    "semantic-ui": "^2.3.2",
+    "style-loader": "0.13.1",
+    "webpack": "2.2.1",
+    "webpack-bundle-analyzer": "^2.4.0",
+    "webpack-dev-middleware": "^2.0.0",
+    "webpack-hot-middleware": "2.13.2"
+  },
+  "babel": {
+    "env": {
+      "development": {
+        "presets": [
+          "env",
+          "react",
+          "stage-1"
+        ]
+      },
+      "production": {
+        "presets": [
+          [
+            "env",
+            {
+              "es2015": {
+                "modules": false
+              },
+              "targets": {
+                "ie": 9,
+                "uglify": true
+              }
+            }
+          ],
+          "react",
+          "stage-1"
+        ],
+        "plugins": [
+          "react-hot-loader/babel",
+          "transform-react-constant-elements",
+          "transform-react-remove-prop-types",
+          [
+            "lodash",
+            {
+              "id": [
+                "lodash",
+                "semantic-ui-react"
+              ]
+            }
+          ]
+        ]
+      },
+      "test": {
+        "presets": [
+          "env",
+          "react",
+          "stage-1"
+        ]
+      }
+    }
+  },
+  "eslintConfig": {
+    "root": true,
+    "extends": [
+      "eslint:recommended",
+      "plugin:import/errors",
+      "plugin:import/warnings"
+    ],
+    "plugins": [
+      "react"
+    ],
+    "parser": "babel-eslint",
+    "parserOptions": {
+      "ecmaVersion": 6,
+      "sourceType": "module",
+      "ecmaFeatures": {
+        "jsx": true,
+        "experimentalObjectRestSpread": true
+      }
+    },
+    "env": {
+      "es6": true,
+      "browser": true,
+      "node": true,
+      "jquery": true,
+      "jest": true
+    },
+    "rules": {
+      "import/no-named-as-default": 0,
+      "quotes": 0,
+      "no-console": 1,
+      "no-unused-vars": 0,
+      "no-debugger": 1,
+      "no-var": 1,
+      "semi": [
+        1,
+        "always"
+      ],
+      "no-trailing-spaces": 0,
+      "eol-last": 0,
+      "no-underscore-dangle": 0,
+      "no-alert": 0,
+      "no-lone-blocks": 0,
+      "jsx-quotes": 1,
+      "react/display-name": [
+        1,
+        {
+          "ignoreTranspilerName": false
+        }
+      ],
+      "react/forbid-prop-types": 0,
+      "react/jsx-boolean-value": 0,
+      "react/jsx-closing-bracket-location": 0,
+      "react/jsx-curly-spacing": 1,
+      "react/jsx-indent-props": 0,
+      "react/jsx-key": 1,
+      "react/jsx-max-props-per-line": 0,
+      "react/jsx-no-bind": 0,
+      "react/jsx-no-duplicate-props": 1,
+      "react/jsx-no-literals": 0,
+      "react/jsx-no-undef": 1,
+      "react/jsx-pascal-case": 1,
+      "react/jsx-sort-prop-types": 0,
+      "react/jsx-sort-props": 0,
+      "react/jsx-uses-react": 1,
+      "react/jsx-uses-vars": 1,
+      "react/jsx-wrap-multilines": 1,
+      "react/no-danger": 1,
+      "react/no-did-mount-set-state": 1,
+      "react/no-did-update-set-state": 1,
+      "react/no-direct-mutation-state": 1,
+      "react/no-multi-comp": 1,
+      "react/no-set-state": 0,
+      "react/no-unknown-property": 1,
+      "react/prefer-es6-class": 1,
+      "react/prop-types": 1,
+      "react/react-in-jsx-scope": 1,
+      "import/extensions": 1,
+      "react/self-closing-comp": 1,
+      "react/sort-comp": 1
+    },
+    "globals": {}
+  }
+}

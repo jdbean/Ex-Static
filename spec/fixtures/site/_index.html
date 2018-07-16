@@ -1,0 +1,25 @@
+<html>
+<!-- <script src="http://127.0.0.1:35729/livereload.js?snipver=1&amp;port=35729"></script>
+<script>
+  document.write(
+    '<script src="http://' +
+    (location.host || 'localhost').split(':')[0] +
+    ':35729/livereload.js?snipver=1&amp;port=35729"' +
+    '></' +
+    'script>');
+</script> -->
+---
+layout: default
+title: {{ site.name }}
+---
+
+<div id="home">
+  <h1>Blog Posts</h1>
+  <ul class="posts">
+    {% for post in site.posts %}
+      <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
+    {% endfor %}
+    You're probably looking for <a href="/admin"><code>/admin</code></a>.
+  </ul>
+</div>
+</html>

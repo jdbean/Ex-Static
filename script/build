@@ -1,0 +1,7 @@
+#!/bin/sh
+
+set -e
+
+echo "Building frontend server..."
+npm run clean-dist
+npm run build

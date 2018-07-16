@@ -1,0 +1,8 @@
+#!/bin/sh
+
+set -e
+
+
+cd ./spec/fixtures/site || exit
+# RACK_ENV=development bundle exec jekyll serve --verbose --watch
+RACK_ENV=development bundle exec jekyll serve --verbose -l

@@ -1,0 +1,12 @@
+/*******************************
+         Site Overrides
+*******************************/
+
+.ui.table td > strong > a:hover {
+  color: #4298b5;
+}
+
+
+.ui.table td > strong > a {
+  color: #444;
+}

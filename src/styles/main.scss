@@ -1,0 +1,131 @@
+@import "vendors/font-awesome/font-awesome";
+@import "vendors/codemirror";
+@import "vendors/toastr/toastr";
+@import "vendors/highlight/atom-one-dark";
+@import "normalize";
+@import "variables";
+@import "mixins";
+@import "header";
+@import "content";
+@import "form";
+@import "metafields";
+@import "breadcrumbs";
+@import "transitions";
+@import "preview";
+
+
+* {
+  box-sizing: border-box;
+}
+
+#root {
+  width: 100vw;
+  position: absolute;
+}
+
+
+body {
+  color: #444;
+  font-family: lato, Helvetica, Helvetica Neue;
+  background-color: #f7f7f7;
+}
+
+h1,h2,h3,h4,h5 {
+  font-weight: normal;
+}
+
+ul {
+  margin: 0;
+}
+
+a {
+  color: $dark-orange;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+i {
+  display: inline-block;
+  width: 15px;
+  margin-right: 10px;
+}
+
+button > span {
+    display: inline-block;
+    margin: 0 0.1rem;
+  }
+
+button > i {
+  margin: 0 0.1rem;
+}
+
+b {
+  color: $orange;
+}
+
+div:focus {
+  outline: none;
+}
+
+.wrapper {
+  height: 100vh;
+  min-height: calc(100vh - 46px);
+  min-width: 100vw;
+  position: absolute;
+  overflow-x: hidden;
+  &:focus {
+    outline: none;
+  }
+}
+
+.container {
+  margin: auto;
+  max-width: 900px;
+  position: relative;
+}
+
+.splitter {
+  height: 1px;
+  width: 100%;
+  margin: 5px 0;
+  border-bottom: 1px solid #424242;
+  border-top: 1px solid #212121;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.warning {
+  margin-bottom: 10px;
+  padding: 10px;
+  color: #8a6e00;
+  text-align: center;
+  background-color: #fff5cc;
+}
+
+.pull-right {
+  margin-left: auto;
+}
+
+.notfound {
+  text-align: center;
+  img {
+    margin: 40px 0;
+  }
+}
+
+@font-face {
+  font-family: "lato";
+  src: url(../assets/fonts/lato-regular.ttf);
+}
+
+@font-face {
+  font-family: "lato";
+  src: url(../assets/fonts/lato-bold.ttf);
+  font-weight: bold;
+}

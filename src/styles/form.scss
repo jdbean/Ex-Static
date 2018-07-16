@@ -1,0 +1,65 @@
+.field {
+  background-color: #fff;
+  color: #555;
+  outline: 0;
+  width: 100%;
+  height: 2.286em;
+  padding: .429em .857em;
+  border: 1px solid $border-color;
+  font-size: 14px;
+  @include box-sizing(border-box);
+  @include box-shadow(inset 0 1px 1px rgba(0, 0, 0, 0.075));
+  @include border-radius($border-radius);
+  &:focus {
+    border-color: $border-color-focus;
+  }
+}
+
+.field-label {
+  width: 100%;
+  margin: 0 0 10px 0;
+  text-transform: uppercase;
+  display: block;
+}
+
+.input-title,
+.input-path {
+  textarea {
+    display:inline-block;
+    margin: 5px 0 30px 0;
+    padding: 0;
+    width: 100%;
+    word-wrap: break-word;
+    -webkit-font-smoothing: antialiased;
+    overflow: hidden;
+    resize: vertical;
+    background: none;
+    outline: none;
+    border: 0;
+    border-bottom: 1px solid #ccc;
+    box-shadow: none;
+    @include placeholder-color(#9D9D9D, italic);
+    &:focus {
+      color: #000 !important;
+      border-bottom: 2px solid $border-color-focus;
+    }
+    &:hover {
+      color: #444;
+    }
+  }
+}
+
+.input-title {
+  textarea {
+    min-height: 57px;
+    font-size: 45px;
+  }
+}
+
+.input-path {
+  textarea {
+    margin-top: 10px;
+    min-height: 30px;
+    font-size: 20px;
+  }
+}

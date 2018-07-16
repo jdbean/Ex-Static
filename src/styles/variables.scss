@@ -1,0 +1,36 @@
+$content-side-width: 180px;
+
+$off-white: #fafafa;
+$white: #fcfcfc;
+$dark-gray: #727272;
+$inactive-gray: #9ea1a3;
+$new: #68BD6A;
+$new-hover: #80ce81;
+$yellow: #e19d29;
+$real-orange: #dd5f32;
+$blue: #4298b5;
+$orange: $blue;
+$purple: #8c6fca;
+$dark-red: $real-orange;
+
+
+$green: #91b06a;
+$dark-orange: $blue;
+
+$border-color: #d4d7d9;
+$border-color-focus: $orange;
+$border-radius: 4px;
+
+$btn-initial: #9ea1a3;
+$btn-initial-border: #7B7B7B;
+$btn-fat-hover: $dark-orange;
+$btn-fat-hover-border: $dark-orange;
+$btn-active: $blue;
+$btn-active-border: #7B7B7B;
+
+$btn-inactive: $btn-initial !important;
+$btn-inactive-border: $btn-initial-border !important;
+$btn-success: $green;
+$btn-success-border: $btn-active-border;
+$btn-danger: $real-orange;
+$btn-danger-border: $btn-active-border;

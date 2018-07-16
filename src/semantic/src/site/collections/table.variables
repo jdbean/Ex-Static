@@ -1,0 +1,7 @@
+/*******************************
+    User Variable Overrides
+*******************************/
+
+@stripedBackground : #DEDEDE;
+//* @headerBackground : #B2B2B2; *//
+@headerBackground : #DEDEDE;

@@ -1,0 +1,9 @@
+/*******************************
+         Site Overrides
+*******************************/
+
+.ui.fullscreen.modal > .close {
+  top: -2.0rem;
+  right: -2.0rem;
+  color: white;
+}

@@ -1,0 +1,11 @@
+/*******************************
+     User Global Variables
+*******************************/
+@grey: #727272;
+@inactive-gray: #9ea1a3;
+@yellow: #e19d29;
+@orange: #dd5f32;
+@blue: #4298b5;
+@purple: #8c6fca;
+@primaryColor: @blue;
+@green: #91b06a;

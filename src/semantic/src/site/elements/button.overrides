@@ -1,0 +1,36 @@
+/*******************************
+         Site Overrides
+*******************************/
+.ui.button.hover-color:not(:hover) {
+  background-color:grey;
+  background:gray;
+}
+
+.ui.button {
+  margin-top: 1.57px;
+  margin-bottom: 1.57px;
+}
+
+.ui.button:hover {
+  -webkit-transition: background-color 0.6s;
+  -moz-transition: background-color 0.6s;
+  -o-transition: background-color 0.6s;
+  transition: background-color 0.6s;
+}
+
+.ui.button {
+
+}
+
+.ui.buttons.or-fix > a > .button {
+  border-left: none;
+  margin-left: 0em;
+  border-top-left-radius: @borderRadius;
+  border-bottom-left-radius: @borderRadius;
+  border-top-right-radius: initial;
+  border-bottom-right-radius: initial;
+}
+.ui.buttons.or-fix  > div > .button {
+  border-top-right-radius: @borderRadius;
+  border-bottom-right-radius: @borderRadius;
+}
