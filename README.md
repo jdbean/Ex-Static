@@ -36,4 +36,4 @@ Install the `ex-static` jekyll plugin as you would any other plugin.
 
 ## Demo
 
-A live demo site is available [here](https://office.johannabearman.duckdns.org).
+A live demo site is available [here](https://office.johannabearman.duckdns.org). To access the demo please provide credentials: `demo` and `exstatic password`.
