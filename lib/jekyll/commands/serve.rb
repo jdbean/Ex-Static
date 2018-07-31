@@ -37,7 +37,7 @@ module Jekyll
         end
 
         def ex_static_monkey_patch(server)
-          #server.mount "/admin", Rack::Handler::WEBrick, ExStatic::StaticServer
+          server.mount "/admin", Rack::Handler::WEBrick, ExStatic::StaticServer
           server.mount "/_api",  Rack::Handler::WEBrick, ExStatic::Server
           Jekyll.logger.info "ExStatic mode:", ENV["RACK_ENV"] || "production"
         end
