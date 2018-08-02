@@ -1,5 +1,5 @@
  /*
- * # Semantic UI - 2.3.2
+ * # Semantic UI - 2.3.3
  * https://github.com/Semantic-Org/Semantic-UI
  * http://www.semantic-ui.com/
  *
@@ -9,7 +9,7 @@
  *
  */
 /*!
- * # Semantic UI 2.3.2 - Icon
+ * # Semantic UI 2.3.3 - Icon
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -606,6 +606,36 @@ for instance `lemon icon` not `lemon outline icon` since there is only one lemon
 /*******************************
             Icons
 *******************************/
+
+/* Deprecated *In/Out Naming Conflict) */
+
+i.icon.linkedin.in:before {
+  content: "\f0e1";
+}
+
+i.icon.zoom.in:before {
+  content: "\f00e";
+}
+
+i.icon.zoom.out:before {
+  content: "\f010";
+}
+
+i.icon.sign.in:before {
+  content: "\f2f6";
+}
+
+i.icon.in.cart:before {
+  content: "\f218";
+}
+
+i.icon.log.out:before {
+  content: "\f2f5";
+}
+
+i.icon.sign.out:before {
+  content: "\f2f5";
+}
 
 /* Icons */
 
@@ -2373,7 +2403,7 @@ i.icon.linkedin:before {
   content: "\f08c";
 }
 
-i.icon.linkedin.in:before {
+i.icon.linkedin.alt:before {
   content: "\f0e1";
 }
 
@@ -3121,16 +3151,8 @@ i.icon.shower:before {
   content: "\f2cc";
 }
 
-i.icon.sign.in.alternate:before {
-  content: "\f2f6";
-}
-
 i.icon.sign.language:before {
   content: "\f2a7";
-}
-
-i.icon.sign.out.alternate:before {
-  content: "\f2f5";
 }
 
 i.icon.signal:before {
@@ -4443,7 +4465,7 @@ i.icon.ils:before {
   content: "\f20b";
 }
 
-i.icon.in.cart:before {
+i.icon.in-cart:before {
   content: "\f218";
 }
 
@@ -5099,11 +5121,11 @@ i.icon.zip:before {
   content: "\f187";
 }
 
-i.icon.zoom.in:before {
+i.icon.zoom-in:before {
   content: "\f00e";
 }
 
-i.icon.zoom.out:before {
+i.icon.zoom-out:before {
   content: "\f010";
 }
 
@@ -5195,7 +5217,7 @@ i.icon.level.up:before {
   content: "\f3bf";
 }
 
-i.icon.log.out:before {
+i.icon.logout:before {
   content: "\f2f5";
 }
 
@@ -5235,11 +5257,11 @@ i.icon.resize.vertical:before {
   content: "\f338";
 }
 
-i.icon.sign.in:before {
+i.icon.sign-in:before {
   content: "\f2f6";
 }
 
-i.icon.sign.out:before {
+i.icon.sign-out:before {
   content: "\f2f5";
 }
 
@@ -5972,6 +5994,7 @@ i.icon.leanpub,
 i.icon.less,
 i.icon.linechat,
 i.icon.linkedin,
+i.icon.linkedin.alternate,
 i.icon.linkedin.in,
 i.icon.linode,
 i.icon.linux,
@@ -6138,7 +6161,7 @@ i.icon.youtube.square {
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.3.2 - Table
+ * # Semantic UI 2.3.3 - Table
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -7441,7 +7464,7 @@ i.icon.youtube.square {
   color: #444;
 }
 /*!
- * # Semantic UI 2.3.2 - Modal
+ * # Semantic UI 2.3.3 - Modal
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -8099,7 +8122,7 @@ i.icon.youtube.square {
   color: white;
 }
 /*!
- * # Semantic UI 2.3.2 - Dimmer
+ * # Semantic UI 2.3.3 - Dimmer
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -8352,7 +8375,7 @@ body.dimmable > .dimmer {
         User Overrides
 *******************************/
 /*!
- * # Semantic UI 2.3.2 - Button
+ * # Semantic UI 2.3.3 - Button
  * http://github.com/semantic-org/semantic-ui/
  *
  *

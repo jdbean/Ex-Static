@@ -19,5 +19,5 @@
   "autoInstall": false,
   "rtl": false,
   "components": ["icon", "table", "modal", "dimmer", "button"],
-  "version": "2.3.2"
+  "version": "2.3.3"
 }

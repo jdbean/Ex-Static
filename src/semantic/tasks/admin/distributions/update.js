@@ -162,7 +162,7 @@ module.exports = function(callback) {
       console.log('Sleeping for 1 second...');
       // avoid rate throttling
       global.clearTimeout(timer);
-      timer = global.setTimeout(stepRepo, 500);
+      timer = global.setTimeout(stepRepo, 100);
     }
 
     if (localRepoSetup) {
