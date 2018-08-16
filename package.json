@@ -43,7 +43,6 @@
     "react-document-title": "^2.0.3",
     "react-dom": "^16.0.0",
     "react-hotkeys": "^1.1.4",
-    "react-markdown": "^3.3.3",
     "react-redux": "^5.0.1",
     "react-redux-toastr": "^7.3.0",
     "react-router-dom": "4.2.2",
