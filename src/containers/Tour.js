@@ -124,7 +124,7 @@ export class Tour extends React.Component {
           callback={this.callback}
           styles={{
             options: {
-              arrowColor: '#e3ffeb',
+              arrowColor: '#4298b5',
               primaryColor: '#8c6fca',
             },
           }}
