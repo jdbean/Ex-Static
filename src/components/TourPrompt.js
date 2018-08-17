@@ -12,12 +12,12 @@ const TourPrompt = props => {
 
   return (
     <Modal dimmer="blurring" defaultOpen>
-      <Modal.Header>Welcome!</Modal.Header>
+      <Modal.Header>Welcome to Ex-Static!</Modal.Header>
       <Modal.Content>
         <p>
-          Hi There! It seems that you might be new around here; Would you like a
+          Hi There! It seems that you might be new around here; would you like a
           tour to help you get the hang of things? If so, please press the
-          button marked yes and if you get lost, keep your eyes out for the
+          button marked 'yes'. If you get lost keep your eyes out for the
           pulsing purple dot to get back on track.
         </p>
       </Modal.Content>
