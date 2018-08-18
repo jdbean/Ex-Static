@@ -6,7 +6,7 @@ import Joyride from 'react-joyride';
 import { EVENTS } from 'react-joyride/es/constants';
 import {
   viewedDocuments,
-  // viewedDocumentsEdit,
+  viewedDocumentsEdit,
   // noTour,
 } from '../ducks/tour';
 
@@ -103,7 +103,7 @@ export class Tour extends React.Component {
           {
             target: '.breadcrumbs',
             content:
-              "This is the breadcrumbs section. It show you where you are in the file-hierachy of your site. You can navigate to the folder by pressing any of the links in this section.",
+              'This is the breadcrumbs section. It show you where you are in the file-hierachy of your site. You can navigate to the folder by pressing any of the links in this section.',
             placement: 'auto',
           },
           {
@@ -121,7 +121,7 @@ export class Tour extends React.Component {
           {
             target: '.input-title',
             content:
-              "This is the title field for your post. The title entered here is usually displayed prominently at the top of your post.",
+              'This is the title field for your post. The title entered here is usually displayed prominently at the top of your post.',
             placement: 'auto',
           },
           {
@@ -138,8 +138,7 @@ export class Tour extends React.Component {
           },
           {
             target: 'div.meta-new',
-            content:
-              "Click here to add a new key/value pair to your post",
+            content: 'Click here to add a new key/value pair to your post',
             placement: 'auto',
           },
           {
@@ -163,10 +162,18 @@ export class Tour extends React.Component {
 
   callback = data => {
     const { action, index, type } = data;
-    // Update user preferences with completed tour flag
-    if (type === EVENTS.TOUR_END) {
-      const { viewedDocuments } = this.props;
-      viewedDocuments();
+    // Update user preferences with completed tour flag for tourType
+    const { tourType } = this.props;
+    if (tourType === 'documents') {
+      if (type === EVENTS.TOUR_END) {
+        const { viewedDocuments } = this.props;
+        viewedDocuments();
+      }
+    } else if (tourType === 'edit/new') {
+      if (type === EVENTS.TOUR_END) {
+        const { viewedDocumentsEdit } = this.props;
+        viewedDocumentsEdit();
+      }
     }
   };
 
@@ -201,6 +208,7 @@ Tour.propTypes = {
   documentsEditTour: PropTypes.bool.isRequired,
   tourType: PropTypes.string.isRequired,
   viewedDocuments: PropTypes.func.isRequired,
+  viewedDocumentsEdit: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -209,7 +217,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({ viewedDocuments }, dispatch);
+  bindActionCreators({ viewedDocuments, viewedDocumentsEdit }, dispatch);
 
 export default connect(
   mapStateToProps,
