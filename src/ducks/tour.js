@@ -6,11 +6,9 @@ export const SHOW_DOCUMENTS_TOUR = 'SHOW_DOCUMENTS_TOUR';
 export const SHOW_DOCUMENTS_EDIT_TOUR = 'SHOW_DOCUMENTS_EDIT_TOUR';
 
 // Actions
-
 export const viewedDocuments = () => ({
   type: VIEWED_DOCUMENTS,
 });
-
 export const viewedDocumentsEdit = () => ({
   type: VIEWED_DOCUMENTS_EDIT,
 });
@@ -29,8 +27,8 @@ export default function tour(
   state = {
     documentsTour: true, // Has the offer to tour the documents view been dismissed?
     documentsEditTour: true, // Has the offer to tour the documents edit/new view been dismissed?
-    showDocsEditTour: false,
-    showDocsTour: false,
+    showDocsEditTour: false, // Should the documents edit/new tour be shown?
+    showDocsTour: false, // Should the documents view tour be shown?
   },
   action
 ) {
