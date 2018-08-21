@@ -4,11 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Joyride from 'react-joyride';
 import { EVENTS } from 'react-joyride/es/constants';
-import {
-  viewedDocuments,
-  // viewedDocumentsEdit,
-  // noTour,
-} from '../ducks/tour';
+import { viewedDocuments } from '../ducks/tour';
 
 export class Tour extends React.Component {
   constructor(props) {
@@ -37,27 +33,27 @@ export class Tour extends React.Component {
           {
             target: 'body',
             content:
-              'Welcome to the Ex-Static project: a flexible interface for updating blogs made with the Jekyll Static Site Builder. The page that you are reading this on is associated with one specific blog. Any changes you make in Ex-Static will be immediatly reflected on that blog.',
+              'Welcome to the Ex-Static project: a flexible interface for updating blogs made with the Jekyll Static Site Builder. You are viewing this prompt on an instance of Ex-Static that is associated with one specific blog. Any changes you make here Ex-Static will be immediatly reflected on that blog.',
             placement: 'center',
             disableBeacon: true,
           },
           {
             target: '.title',
             content:
-              "This is the title of your blog. Selecting this link will bring you to your Website's homepage.",
+              "This is the title of your blog. Selecting this link will bring you to your website homepage.",
             placement: 'auto',
           },
           {
             target: '.breadcrumbs',
             content:
-              'Keep your eye here for "breadcrumbs" to help you navigate your site\'s files in Ex-Static.',
+              'Keep your eye on this area for "breadcrumbs" to help you navigate your site\'s folders and files in Ex-Static.',
             placement: 'auto',
           },
           {
             target: 'div.documents-content > table',
             content:
-              'This section contains the files that make up the posts on your Jekyll blog. Folder icons will appear if your post files have been organized into folders. Clicking on a folder name will let you access its contents.',
-            placement: 'auto',
+              'This section contains the files that make up the posts on your Jekyll blog. File are denoted with a file icon and if your post files are organized into folders they will be denoted with a folder icon. Clicking on a folder name will let you access its contents.',
+          placement: 'auto',
           },
           {
             target:
@@ -89,33 +85,33 @@ export class Tour extends React.Component {
           {
             target: 'body',
             content:
-              "The screen you're currently is used to add or edit posts on your jekyll blog. Post files in jekyll are composed of two sections: The first section is post content which is wirrten in a relatively simple language called Markdown. The second section is the configuration or metadata consists of something in a format called YAML which consists of label and value pairs. Jekyll is a powerful tool with lots of options so each blog may have its own special requirements and options that are impossible to cover on this tour.",
+              "This interface is used to add or edit posts on your Jekyll blog. Post files in jekyll are composed of two sections. The first section is post content which is wirrten in a relatively simple language called Markdown. The second section is the configuration or metadata which is written in a format called YAML which consists of pairs of keys (labels) and values. Jekyll is a powerful tool with lots of options so each blog may have its own special requirements and options that are impossible to cover on this tour.",
             placement: 'center',
             disableBeacon: true,
           },
           {
             target: 'body',
             content:
-              "The content of this screen may change slightly depending on whether you are creating a brand new post or editing one that already exsists. We'll try to distinguish any difference whereever possible.",
+              "The content of this screen may change slightly depending on whether you are creating a brand new post or editing one that already exsists. We'll try to note any differences whereever possible.",
             placement: 'center',
             disableBeacon: true,
           },
           {
             target: '.breadcrumbs',
             content:
-              "This is the breadcrumbs section. It show you where you are in the file-hierachy of your site. You can navigate to the folder by pressing any of the links in this section.",
+              "This is the breadcrumbs section. It shows you where you are in the hierachy of your site's post files. You can navigate to a folder by selecting the links that appear here.",
             placement: 'auto',
           },
           {
             target: '.input-path',
             content:
-              "This is the input field for the post's path. All posts are required to have a valid path. Path is the name and location of the file in the site's source directory. When creating a new post, if you leave path blank, it will be autogenerated based on the title you provide and your present location in the file hierachy.",
+              "This is the input field for this post's path. A path is the name and location of the file in the site's source directory. All posts are required to have a valid path. When creating a new post, if you leave path blank, it will be autogenerated based on the title you provide and your present location in the file hierachy.",
             placement: 'auto',
           },
           {
             target: '.input-path > label > span > .fa.fa-info-circle',
             content:
-              "Clicking on these icons will give you guidance on the corresponding field. If you don't pick something up during the tour, these info boxes will always be available for quick reference.",
+              "Clicking on these help icons will give you guidance on the corresponding field. If you don't pick something up during the tour, these info boxes will always be available for quick reference.",
             placement: 'auto',
           },
           {
@@ -133,7 +129,7 @@ export class Tour extends React.Component {
           {
             target: 'div.metafields-wrapper:nth-child(5)',
             content:
-              "This is the section where you add the metadata for your post. Each piece of metadata has a key (the type of metadata) and a value. Which types of metadata you want to enter depends on how your particular Blog is set up. Three common metadata keys are 'tags', 'author', and 'date'. If you enter date as a key, Ex-Static will help you out with a neat date-picker to make things a little easier.",
+              "This is the section where you add metadata for your post. Each piece of metadata has a key (the type of metadata) and a value. Which types of metadata you want to enter depends on how your specific blog is configured. Three common metadata keys are 'tags', 'author', and 'date'. If you enter 'date' as a key, Ex-Static will help you out with a convenient date-picker to make things a little easier.",
             placement: 'auto',
           },
           {
@@ -145,7 +141,7 @@ export class Tour extends React.Component {
           {
             target: 'div.content-side',
             content:
-              "These buttons depend on whether you are creating a new post or editing a preexsisting one. If you are creating a new post, your options are 'Cancel' which brings you back to the Ex-Static folder view and 'Create' which will save the post and add it to your blog. I you are editing a preexsisting post you'll see four options: 'Save', 'Visit', 'View', and Delete'. 'Save' will update the post on your blog with the changes you've made and 'Delete' will delete it from your blog and from Ex-Static completely. 'Visit' will open a new window with the post's page on your blog in a new tab while 'View' will pop up a quick preview of the post exactly as it appears on your blog.",
+              "The buttons that appear on this side bar depend on whether you are viewing this interface in the context of creating a new post or editing a preexsisting one. If you are creating a new post, your options are 'Cancel' which abandons your work and brings you back to the Ex-Static folder view and 'Create' which saves the post and adds it to your blog. If you are editing a preexsisting post you'll see four options: 'Save', 'Visit', 'View', and Delete'. 'Save' will update the current post on your blog with the changes you've made. 'Delete' will delete the current post from Ex-Static and from your blog entirely. 'Visit' will open a new window with the current post's web page on your blog while 'View' will pop up a quick preview of the current post exactly as it appears on your blog.",
             placement: 'auto',
           },
         ];
@@ -171,7 +167,6 @@ export class Tour extends React.Component {
   };
 
   render() {
-    // this.renderPrompt();
     const { steps, run } = this.state;
 
     return (

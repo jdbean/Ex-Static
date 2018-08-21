@@ -11,11 +11,9 @@ import Button from '../../components/Button';
 import {
   fetchCollection,
   deleteDocument,
-  // clearUpdated,
 } from '../../ducks/collections';
 import {
   viewedDocuments,
-  // viewedDocumentsEdit,
   showDocumentsTour,
   noTour,
 } from '../../ducks/tour';

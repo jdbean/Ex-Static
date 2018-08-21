@@ -1,11 +1,6 @@
 import React from 'react';
 import { Modal, Button } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-// import {
-//   viewedDocuments,
-//   viewedDocumentsEdit,
-//   noTour
-// } from '../ducks/tour';
 
 const TourPrompt = props => {
   const { handleNoClick, handleYesClick } = props;
