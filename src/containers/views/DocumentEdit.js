@@ -21,6 +21,11 @@ import {
   putDocument,
   // clearUpdated,
 } from '../../ducks/collections';
+import {
+  viewedDocumentsEdit,
+  showDocumentsEditTour,
+  noTour,
+} from '../../ducks/tour';
 import { updateTitle, updateBody, updatePath } from '../../ducks/metadata';
 import { clearErrors } from '../../ducks/utils';
 import { injectDefaultFields } from '../../utils/metadata';
@@ -28,6 +33,8 @@ import { capitalize, preventDefault } from '../../utils/helpers';
 import { ADMIN_PREFIX } from '../../constants';
 import Preview from '../../components/Preview';
 import { toastr } from 'react-redux-toastr';
+import Tour from '../Tour';
+import TourPrompt from '../../components/TourPrompt';
 
 export class DocumentEdit extends Component {
   componentDidMount() {
@@ -106,6 +113,30 @@ export class DocumentEdit extends Component {
 
     toastr.confirm(this.getDeleteMessage(filename), modalConfig);
   };
+
+  renderTour() {
+    const { showDocsEditTour } = this.props;
+    return showDocsEditTour && <Tour tourType="edit/new" />;
+  }
+
+  renderTourPrompt() {
+    const {
+      documentsEditTour,
+      noTour,
+      showDocumentsEditTour,
+      showDocsEditTour,
+    } = this.props;
+    return (
+      documentsEditTour &&
+      !showDocsEditTour && (
+        <TourPrompt
+          tourType="documents"
+          handleNoClick={noTour}
+          handleYesClick={showDocumentsEditTour}
+        />
+      )
+    );
+  }
 
   render() {
     const {
@@ -217,6 +248,8 @@ export class DocumentEdit extends Component {
                 weight="block"
               />
             </div>
+            {this.renderTourPrompt()}
+            {this.renderTour()}
           </div>
         </HotKeys>
       </DocumentTitle>
@@ -241,6 +274,11 @@ DocumentEdit.propTypes = {
   match: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired,
   config: PropTypes.object.isRequired,
+  documentsEditTour: PropTypes.bool.isRequired,
+  viewedDocumentsEdit: PropTypes.func.isRequired,
+  noTour: PropTypes.func.isRequired,
+  showDocumentsEditTour: PropTypes.func.isRequired,
+  showDocsEditTour: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -250,6 +288,8 @@ const mapStateToProps = state => ({
   updated: state.collections.updated,
   errors: state.utils.errors,
   config: state.config.config,
+  documentsEditTour: state.tour.documentsEditTour,
+  showDocsEditTour: state.tour.showDocsEditTour,
 });
 
 const mapDispatchToProps = dispatch =>
@@ -262,6 +302,9 @@ const mapDispatchToProps = dispatch =>
       updateBody,
       updatePath,
       clearErrors,
+      viewedDocumentsEdit,
+      noTour,
+      showDocumentsEditTour,
       // clearUpdated,
     },
     dispatch

@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import SimpleMDE from 'react-simplemde-editor';
 import hljs from 'highlight.js';
 import Tooltip from './Tooltip';
-import ReactMarkdown from 'react-markdown';
-import ReactDOMServer from 'react-dom/server';
 import marked from 'marked';
 
 class MarkdownEditor extends Component {

@@ -8,6 +8,7 @@ import DocumentTitle from 'react-document-title';
 import { fetchConfig } from '../ducks/config';
 import keyboardShortcuts from '../constants/keyboardShortcuts';
 import Routes from './Routes';
+// import Tour from './Tour';
 
 class App extends Component {
   componentDidMount() {
@@ -41,6 +42,7 @@ class App extends Component {
     return (
       <DocumentTitle title="Ex-Static">
         <HotKeys keyMap={keyboardShortcuts} className="wrapper">
+          {/* <Tour/> */}
           {config.content && <Routes config={config} />}
         </HotKeys>
       </DocumentTitle>
@@ -52,6 +54,7 @@ App.propTypes = {
   fetchConfig: PropTypes.func.isRequired,
   config: PropTypes.object.isRequired,
   isFetching: PropTypes.bool.isRequired,
+  // viewedDocuments: PropTypes.bool.isRequired,
   updated: PropTypes.bool,
 };
 
@@ -59,6 +62,7 @@ const mapStateToProps = state => ({
   config: state.config.config,
   updated: state.config.updated,
   isFetching: state.config.isFetching,
+  // viewedDocuments: state.tour.viewedDocuments,
 });
 
 const mapDispatchToProps = dispatch =>

@@ -8,17 +8,16 @@ import moment from 'moment';
 import DocumentTitle from 'react-document-title';
 import Breadcrumbs from '../../components/Breadcrumbs';
 import Button from '../../components/Button';
-import {
-  fetchCollection,
-  deleteDocument,
-  // clearUpdated,
-} from '../../ducks/collections';
+import { fetchCollection, deleteDocument } from '../../ducks/collections';
+import { viewedDocuments, showDocumentsTour, noTour } from '../../ducks/tour';
 // import { search } from '../../ducks/utils';
 import { capitalize } from '../../utils/helpers';
 import { ADMIN_PREFIX } from '../../constants';
 import { Icon, Table } from 'semantic-ui-react';
 import Preview from '../../components/Preview';
 import { toastr } from 'react-redux-toastr';
+import Tour from '../Tour';
+import TourPrompt from '../../components/TourPrompt';
 
 export class Documents extends Component {
   componentDidMount() {
@@ -38,11 +37,11 @@ export class Documents extends Component {
     }
   }
 
-  GetDeleteMessage(filename) {
+  getDeleteMessage(filename) {
     return `Are you sure that you want to delete "${filename}"?`;
   }
 
-  GetNotFoundMessage(type) {
+  getNotFoundMessage(type) {
     return `No ${type} found.`;
   }
 
@@ -57,21 +56,47 @@ export class Documents extends Component {
       onCancel: () => null,
     };
 
-    toastr.confirm(this.GetDeleteMessage(filename), modalConfig);
+    toastr.confirm(this.getDeleteMessage(filename), modalConfig);
+  }
+
+  renderTour() {
+    const { showDocsTour } = this.props;
+    return showDocsTour && <Tour tourType="documents" />;
+  }
+
+  renderTourPrompt() {
+    const {
+      documentsTour,
+      noTour,
+      showDocumentsTour,
+      showDocsTour,
+    } = this.props;
+    return (
+      documentsTour &&
+      !showDocsTour && (
+        <TourPrompt
+          tourType="documents"
+          handleNoClick={noTour}
+          handleYesClick={showDocumentsTour}
+        />
+      )
+    );
   }
 
   renderTable() {
     return (
-      <Table striped unstackable>
-        <Table.Header>
-          <Table.Row>
-            <Table.HeaderCell>Name</Table.HeaderCell>
-            <Table.HeaderCell>Date</Table.HeaderCell>
-            <Table.HeaderCell textAlign="right">Actions</Table.HeaderCell>
-          </Table.Row>
-        </Table.Header>
-        <Table.Body>{this.renderRows()}</Table.Body>
-      </Table>
+      <div className="documents-content">
+        <Table striped unstackable>
+          <Table.Header>
+            <Table.Row>
+              <Table.HeaderCell>Name</Table.HeaderCell>
+              <Table.HeaderCell>Date</Table.HeaderCell>
+              <Table.HeaderCell textAlign="right">Actions</Table.HeaderCell>
+            </Table.Row>
+          </Table.Header>
+          <Table.Body>{this.renderRows()}</Table.Body>
+        </Table>
+      </div>
     );
   }
 
@@ -191,7 +216,7 @@ export class Documents extends Component {
 
     return (
       <DocumentTitle title={document_title}>
-        <div>
+        <div className="falafel">
           <div className="content-header">
             <Breadcrumbs type={collection_name} splat={splat} />
             <span className="pull-right">
@@ -205,8 +230,10 @@ export class Documents extends Component {
           {documents.length > 0 ? (
             this.renderTable()
           ) : (
-            <h1>{this.GetNotFoundMessage('documents')}</h1>
+            <h1>{this.getNotFoundMessage('documents')}</h1>
           )}
+          {this.renderTourPrompt()}
+          {this.renderTour()}
         </div>
       </DocumentTitle>
     );
@@ -222,6 +249,11 @@ Documents.propTypes = {
   // search: PropTypes.func.isRequired,
   match: PropTypes.object.isRequired,
   updated: PropTypes.bool.isRequired,
+  documentsTour: PropTypes.bool.isRequired,
+  viewedDocuments: PropTypes.func.isRequired,
+  noTour: PropTypes.func.isRequired,
+  showDocumentsTour: PropTypes.func.isRequired,
+  showDocsTour: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -229,6 +261,8 @@ const mapStateToProps = state => ({
   documents: state.collections.entries,
   isFetching: state.collections.isFetching,
   updated: state.collections.updated,
+  documentsTour: state.tour.documentsTour,
+  showDocsTour: state.tour.showDocsTour,
 });
 
 const mapDispatchToProps = dispatch =>
@@ -236,6 +270,9 @@ const mapDispatchToProps = dispatch =>
     {
       fetchCollection,
       deleteDocument,
+      viewedDocuments,
+      noTour,
+      showDocumentsTour,
       // search,
       // clearUpdated,
     },
