@@ -7,3 +7,7 @@
   right: -2.0rem;
   color: white;
 }
+
+.ui.modal {
+  text-align: center;
+}

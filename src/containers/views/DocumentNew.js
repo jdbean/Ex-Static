@@ -18,10 +18,17 @@ import {
   createDocument,
   // clearUpdated,
 } from '../../ducks/collections';
+import {
+  viewedDocumentsEdit,
+  showDocumentsEditTour,
+  noTour,
+} from '../../ducks/tour';
 import { clearErrors } from '../../ducks/utils';
 import { injectDefaultFields } from '../../utils/metadata';
 import { capitalize, preventDefault } from '../../utils/helpers';
 import { ADMIN_PREFIX } from '../../constants';
+import Tour from '../Tour';
+import TourPrompt from '../../components/TourPrompt';
 
 export class DocumentNew extends Component {
   componentDidUpdate(prevProps) {
@@ -64,6 +71,30 @@ export class DocumentNew extends Component {
       `${ADMIN_PREFIX}/pages/${collection}/${directory || ''}`
     );
   };
+
+  renderTour() {
+    const { showDocsEditTour } = this.props;
+    return showDocsEditTour && <Tour tourType="edit/new" />;
+  }
+
+  renderTourPrompt() {
+    const {
+      documentsEditTour,
+      noTour,
+      showDocumentsEditTour,
+      showDocsEditTour,
+    } = this.props;
+    return (
+      documentsEditTour &&
+      !showDocsEditTour && (
+        <TourPrompt
+          tourType="documents"
+          handleNoClick={noTour}
+          handleYesClick={showDocumentsEditTour}
+        />
+      )
+    );
+  }
 
   render() {
     const {
@@ -135,6 +166,8 @@ export class DocumentNew extends Component {
                 size="block"
               />
             </div>
+            {this.renderTourPrompt()}
+            {this.renderTour()}
           </div>
         </HotKeys>
       </DocumentTitle>
@@ -156,6 +189,11 @@ DocumentNew.propTypes = {
   config: PropTypes.object.isRequired,
   match: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired,
+  documentsEditTour: PropTypes.bool.isRequired,
+  viewedDocumentsEdit: PropTypes.func.isRequired,
+  noTour: PropTypes.func.isRequired,
+  showDocumentsEditTour: PropTypes.func.isRequired,
+  showDocsEditTour: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -164,6 +202,8 @@ const mapStateToProps = state => ({
   errors: state.utils.errors,
   updated: state.collections.updated,
   config: state.config.config,
+  documentsEditTour: state.tour.documentsEditTour,
+  showDocsEditTour: state.tour.showDocsEditTour,
 });
 
 const mapDispatchToProps = dispatch =>
@@ -174,6 +214,9 @@ const mapDispatchToProps = dispatch =>
       updatePath,
       createDocument,
       clearErrors,
+      viewedDocumentsEdit,
+      noTour,
+      showDocumentsEditTour,
       // clearUpdated,
     },
     dispatch

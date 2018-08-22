@@ -593,3 +593,6 @@
   right: -2rem;
   color: white;
 }
+.ui.modal {
+  text-align: center;
+}

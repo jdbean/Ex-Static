@@ -8121,6 +8121,10 @@ i.icon.youtube.square {
   right: -2rem;
   color: white;
 }
+
+.ui.modal {
+  text-align: center;
+}
 /*!
  * # Semantic UI 2.3.3 - Dimmer
  * http://github.com/semantic-org/semantic-ui/

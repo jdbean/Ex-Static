@@ -14,7 +14,7 @@ body.toastr-confirm-active {
   .top-left, .top-right, .top-center, .bottom-left, .bottom-right, .bottom-center {
     width: $toastr-width;
     position: fixed;
-    z-index: 99999999;
+    z-index: 50;
     padding: 0 $defaultSpace;
   }
 
