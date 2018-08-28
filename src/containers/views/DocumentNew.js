@@ -129,7 +129,11 @@ export class DocumentNew extends Component {
             message={this.getLeaveMessage()}
           />
           <div className="content-header">
-            <Breadcrumbs type={collection} splat={params.splat || ''} />
+            <Breadcrumbs
+              type={collection}
+              splat={params.splat || ''}
+              history={this.props.history}
+            />
           </div>
 
           <div className="content-wrapper">

@@ -10,7 +10,7 @@ import Splitter from '../../components/Splitter';
 import Errors from '../../components/Errors';
 import Breadcrumbs from '../../components/Breadcrumbs';
 import Button from '../../components/Button';
-import { Button as SemanticButton } from 'semantic-ui-react';
+import { Button as SemanticButton, Loader, Dimmer } from 'semantic-ui-react';
 import InputPath from '../../components/form/InputPath';
 import InputTitle from '../../components/form/InputTitle';
 import MarkdownEditor from '../../components/MarkdownEditor';
@@ -154,7 +154,12 @@ export class DocumentEdit extends Component {
     const { params } = this.props.match;
 
     if (isFetching) {
-      return null;
+      // return null;
+      return (
+        <Dimmer active inverted>
+          <Loader inverted>Loading</Loader> */}
+        </Dimmer>
+      );
     }
 
     if (_.isEmpty(currentDocument)) {
@@ -197,7 +202,11 @@ export class DocumentEdit extends Component {
           />
 
           <div className="content-header">
-            <Breadcrumbs splat={directory || ''} type={collection} />
+            <Breadcrumbs
+              splat={directory || ''}
+              type={collection}
+              history={this.props.history}
+            />
           </div>
 
           <div className="content-wrapper">

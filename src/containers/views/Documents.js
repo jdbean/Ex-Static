@@ -61,6 +61,7 @@ export class Documents extends Component {
 
   handleClickLink(event, to) {
     event.preventDefault();
+
     this.props.history.push(to);
   }
 
@@ -76,21 +77,16 @@ export class Documents extends Component {
       showDocumentsTour,
       showDocsTour,
     } = this.props;
-    const { tourEnabled } = this.props.config.exstatic;
-    if (!tourEnabled) {
-      noTour();
-    } else {
-      return (
-        documentsTour &&
-        !showDocsTour && (
-          <TourPrompt
-            tourType="documents"
-            handleNoClick={noTour}
-            handleYesClick={showDocumentsTour}
-          />
-        )
-      );
-    }
+    return (
+      documentsTour &&
+      !showDocsTour && (
+        <TourPrompt
+          tourType="documents"
+          handleNoClick={noTour}
+          handleYesClick={showDocumentsTour}
+        />
+      )
+    );
   }
 
   renderTable() {
@@ -212,7 +208,6 @@ export class Documents extends Component {
     const { collection_name } = params;
 
     if (isFetching) {
-      // return null;
       return (
         <Dimmer active inverted>
           <Loader inverted>Loading</Loader>
@@ -231,9 +226,13 @@ export class Documents extends Component {
 
     return (
       <DocumentTitle title={document_title}>
-        <div className="falafel">
+        <div>
           <div className="content-header">
-            <Breadcrumbs type={collection_name} splat={splat} />
+            <Breadcrumbs
+              type={collection_name}
+              splat={splat}
+              history={this.props.history}
+            />
             <span className="pull-right">
               <div className="page-buttons">
                 <Link to={to} tabIndex="-1">
@@ -270,6 +269,7 @@ Documents.propTypes = {
   showDocumentsTour: PropTypes.func.isRequired,
   showDocsTour: PropTypes.bool.isRequired,
   config: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = state => ({

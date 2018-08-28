@@ -21,8 +21,6 @@ export const fetchConfig = () => dispatch => {
 export default function config(
   state = {
     config: {},
-    // updated: false,
-    fieldChanged: false,
     isFetching: false,
   },
   action
@@ -47,7 +45,6 @@ export default function config(
     default:
       return {
         ...state,
-        // updated: false,
       };
   }
 }

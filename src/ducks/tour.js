@@ -2,6 +2,7 @@
 export const VIEWED_DOCUMENTS = 'VIEWED_DOCUMENTS';
 export const VIEWED_DOCUMENTS_EDIT = 'VIEWED_DOCUMENTS_EDIT';
 export const NO_TOUR = 'NO_TOUR';
+export const ENABLE_TOUR = 'ENABLE_TOUR';
 export const SHOW_DOCUMENTS_TOUR = 'SHOW_DOCUMENTS_TOUR';
 export const SHOW_DOCUMENTS_EDIT_TOUR = 'SHOW_DOCUMENTS_EDIT_TOUR';
 
@@ -21,12 +22,15 @@ export const showDocumentsTour = () => ({
 export const showDocumentsEditTour = () => ({
   type: SHOW_DOCUMENTS_EDIT_TOUR,
 });
+export const enableTour = () => ({
+  type: ENABLE_TOUR,
+});
 
 // Reducer
 export default function tour(
   state = {
-    documentsTour: true, // Has the offer to tour the documents view been dismissed?
-    documentsEditTour: true, // Has the offer to tour the documents edit/new view been dismissed?
+    documentsTour: false, // Has the offer to tour the documents view been dismissed?
+    documentsEditTour: false, // Has the offer to tour the documents edit/new view been dismissed?
     showDocsEditTour: false, // Should the documents edit/new tour be shown?
     showDocsTour: false, // Should the documents view tour be shown?
   },
@@ -62,6 +66,12 @@ export default function tour(
       return {
         ...state,
         showDocsEditTour: true,
+      };
+    case ENABLE_TOUR:
+      return {
+        ...state,
+        documentsTour: true,
+        documentsEditTour: true,
       };
     default:
       return {
