@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Prompt, Link } from 'react-router-dom';
+import { Prompt } from 'react-router-dom';
 import _ from 'underscore';
 import { HotKeys } from 'react-hotkeys';
 import DocumentTitle from 'react-document-title';
