@@ -13,7 +13,7 @@ import { viewedDocuments, showDocumentsTour, noTour } from '../../ducks/tour';
 // import { search } from '../../ducks/utils';
 import { capitalize } from '../../utils/helpers';
 import { ADMIN_PREFIX } from '../../constants';
-import { Icon, Table } from 'semantic-ui-react';
+import { Icon, Table, Loader, Dimmer } from 'semantic-ui-react';
 import Preview from '../../components/Preview';
 import { toastr } from 'react-redux-toastr';
 import Tour from '../Tour';
@@ -59,6 +59,11 @@ export class Documents extends Component {
     toastr.confirm(this.getDeleteMessage(filename), modalConfig);
   }
 
+  handleClickLink(event, to) {
+    event.preventDefault();
+    this.props.history.push(to);
+  }
+
   renderTour() {
     const { showDocsTour } = this.props;
     return showDocsTour && <Tour tourType="documents" />;
@@ -71,16 +76,21 @@ export class Documents extends Component {
       showDocumentsTour,
       showDocsTour,
     } = this.props;
-    return (
-      documentsTour &&
-      !showDocsTour && (
-        <TourPrompt
-          tourType="documents"
-          handleNoClick={noTour}
-          handleYesClick={showDocumentsTour}
-        />
-      )
-    );
+    const { tourEnabled } = this.props.config.exstatic;
+    if (!tourEnabled) {
+      noTour();
+    } else {
+      return (
+        documentsTour &&
+        !showDocsTour && (
+          <TourPrompt
+            tourType="documents"
+            handleNoClick={noTour}
+            handleYesClick={showDocumentsTour}
+          />
+        )
+      );
+    }
   }
 
   renderTable() {
@@ -125,7 +135,7 @@ export class Documents extends Component {
       <Table.Row key={name}>
         <Table.Cell collapsing>
           <strong>
-            <Link to={to}>
+            <Link onClick={event => this.handleClickLink(event, to)} to={to}>
               <Icon name="folder" aria-hidden="true" />
               {name}
             </Link>
@@ -202,7 +212,12 @@ export class Documents extends Component {
     const { collection_name } = params;
 
     if (isFetching) {
-      return null;
+      // return null;
+      return (
+        <Dimmer active inverted>
+          <Loader inverted>Loading</Loader>
+        </Dimmer>
+      );
     }
 
     const splat = params.splat || '';
@@ -254,6 +269,7 @@ Documents.propTypes = {
   noTour: PropTypes.func.isRequired,
   showDocumentsTour: PropTypes.func.isRequired,
   showDocsTour: PropTypes.bool.isRequired,
+  config: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -263,6 +279,7 @@ const mapStateToProps = state => ({
   updated: state.collections.updated,
   documentsTour: state.tour.documentsTour,
   showDocsTour: state.tour.showDocsTour,
+  config: state.config.config,
 });
 
 const mapDispatchToProps = dispatch =>
