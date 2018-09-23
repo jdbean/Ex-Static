@@ -22,6 +22,7 @@ export default {
     new webpack.DefinePlugin(GLOBALS),
     new ExtractTextPlugin('styles.css'),
     new webpack.optimize.UglifyJsPlugin({ sourceMap: true }),
+    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     new webpack.LoaderOptionsPlugin({
       minimize: true,
       debug: false,

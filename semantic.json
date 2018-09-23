@@ -18,6 +18,6 @@
   "permission": false,
   "autoInstall": false,
   "rtl": false,
-  "components": ["icon", "table", "modal", "dimmer", "button"],
+  "components": ["icon", "table", "modal", "dimmer", "button", "loader"],
   "version": "2.3.3"
 }

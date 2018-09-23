@@ -5,7 +5,7 @@ import _ from 'underscore';
 import { toTitleCase, slugify } from '../utils/helpers';
 import { ADMIN_PREFIX } from '../constants';
 
-export default function Breadcrumbs({ splat, type }) {
+export default function Breadcrumbs({ splat, type, history }) {
   let base = `${ADMIN_PREFIX}/pages/${type}`;
 
   let links;
@@ -21,12 +21,23 @@ export default function Breadcrumbs({ splat, type }) {
     });
   }
 
+  let handleClickLink = (event, to) => {
+    event.preventDefault();
+
+    history.push(to);
+  };
+
   let nodes = _.map(
     links,
     (link, i) =>
       link.href ? (
         <li key={i}>
-          <Link to={link.href}>{link.label}</Link>
+          <Link
+            onClick={event => handleClickLink(event, link.href)}
+            to={link.href}
+          >
+            {link.label}
+          </Link>
         </li>
       ) : (
         <li key={i}>{toTitleCase(link.label)}</li>

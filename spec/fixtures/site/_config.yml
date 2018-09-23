@@ -10,6 +10,9 @@ twitter_username: jekyllrb
 github_username:  jekyll
 # Load the admin interface.
 
+# Enable Ex-static tour feature
+# exstaticTourEnabled: true
+
 theme:
 # theme: minima
 plugins:
