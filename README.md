@@ -4,6 +4,8 @@ Non-technical authors and editors get a simple web-based graphical interface to 
 
 ## Demo
 
+![Ex-Static](Ex-Static.png)
+
 A live demo site is available [here](https://office.johannabearman.duckdns.org). To access the demo please provide credentials: `demo` and `exstatic password`.
 
 ## Technical Overview
